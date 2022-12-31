@@ -1,0 +1,28 @@
+from pytube import YouTube
+
+# Replace link with the URL of the YouTube video you want to download
+link = "Alert enter video link here what you want to download"
+
+# Create a YouTube object using the link
+youtube_1 = YouTube(link)
+
+# Get the title of the video
+print(youtube_1.title)
+
+# Get the URL of the thumbnail image for the video
+print(youtube_1.thumbnail_url)
+
+# Get all available streams for the video
+videos = youtube_1.streams.all()
+
+# Iterate over the streams and print their information
+for i, stream in enumerate(videos):
+    print(f"{i}: {stream}")
+
+# Prompt the user to select a stream to download
+strm = int(input("Enter the number of the stream you want to download: "))
+
+# Download the selected stream
+videos[strm].download()
+
+print("Successfully downloaded the video!")
